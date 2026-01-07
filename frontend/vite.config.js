@@ -2,14 +2,14 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/Todo-app/',
   plugins: [react()],
   server: {
     port: 3000,
     proxy: {
       '/api': {
         target: 'http://localhost:5000',
-        changeOrigin: true
-        base: process.VITE_BASE_PATH || '/Todo-app',
+        changeOrigin: true,
       }
     }
   }
